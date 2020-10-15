@@ -1386,7 +1386,7 @@ Ok, 一样的问题, 画框框的两个式子是没有理由直接相等的. 我
 
 老实说的话, 这道题这么出, 对于考研的同学来说太难了. 在一般的考研书籍中的话会假定$E-BA$可逆, 然后证明$E-AB$的逆等于$E+A(E-BA)^{-1}B$.
 
-这道题的难度可就比上面的简单的多了, 我们只需验证两个矩阵的乘积等于单位矩阵即可. 
+这道题的难度可就比上面的简单的多了, 我们只需验证两个矩阵的乘积等于单位矩阵即可.
 \begin{align*}
   &(E-AB)[E+A(E-BA)^{-1}B] \\
   ={}& E-AB+A(E-BA)^{-1}B-ABA(E-BA)^{-1}B\\
@@ -1416,17 +1416,341 @@ Ok, 一样的问题, 画框框的两个式子是没有理由直接相等的. 我
 当然, 矩阵级数其实也涉及到收敛半径的问题, 需要用一点摄动法或许更严格. 但是这个方法可以很快求出矩阵的逆, 然后再去验证就可以了. 而且事实上上述等式对任意$A_{m\times n}$和$B_{n\times m}$都是成立的, 不需要方阵.
 
 在2019年8月23日的推文中我们也讲过矩阵$AB$与$BA$的基本关系, 它们具有完全相同的非零特征值及其重数, $\tr(AB)=\tr(BA)$, 对任意实数$\lambda$, 有行列式的降阶公式:
-\[ 
+\[
   \lambda^n|\lambda E_m- A_{m\times n}B_{n\times m}|
   = \lambda^m|\lambda E_n-B_{n\times m} A_{m\times n}|
 \]
-上述公式称为行列式的降阶公式. 
+上述公式称为行列式的降阶公式.
 
 最后, 原来的求逆公式的一个基本应用就是可以推出Sherman-Morrison公式: $A\in\mathbb R^{n\times n}$是可逆矩阵, $u,v\in\mathbb R^n$为列向量, 则$A+uv^{\mathrm T}$当且仅当$1+v^{\mathrm T}A^{-1}u\ne0$时, 且此时有
 \[
   (A+uv^{\mathrm T})^{-1}= A^{-1} - \frac{A^{-1}uv^{\mathrm T}A^{-1}}{1+v^{\mathrm T}A^{-1}u}.
 \]
 证明就留给读者自己完成了.
+\end{MYBOX}
+
+\begin{MYBOX}[colbacktitle=blue]{从一道题谈切比雪夫多项式}\parindent=2em
+  昨天在某数学考研群有一位同学问了如下一道问题：在区间$[1,3]$上用直线$ax+b$来拟合$x^2$，使得偏差$\max_{x\in[1,3]}|x^2-(ax+b)|$最小.
+
+  由于答案上给了非常复杂的拉格朗日乘数法，这位同学想寻求简单做法. 其实如果高中学过数学竞赛的话，应该可以知道这题就是切比雪夫多项式的问题. 我们先来解答这题：
+  \begin{solve}
+    令$f(x)=x^2-(ax+b),M=\max|f(x)|$，那么
+    \[M\ge |f(1)|,|f(2)|,|f(3)|.\]
+    于是
+    \begin{align*}
+      4M & \ge |f(1)| + 2|f(2)| + |f(3)| \ge |f(1)-2f(2)+f(3)|\\
+      & = |1-(a+b)-2[4-(2a+b)]+9-(3a+b)|=2,
+    \end{align*}
+    即$M\ge \frac12$, 且等号在$f(1)=f(3)=-f(2)=\frac12$时取得，此时$a=4,b=-\frac72$.
+  \end{solve}
+
+  这个做法似乎有点巧合?自然不是，这是切比雪夫多项式的必然结果:
+  \begin{theorem}
+    对$n\ge1$，在所有次数为$n$的首一多项式中，$f(x)=\frac1{2^{n-1}}T_n(x)$是使得$|f(x)|$在$[-1,1]$上的最大值取最小的多项式，并且此时$|f(x)|$的最大值为$\frac1{2^{n-1}}$，且在$n+1$个值$x=\cos\frac{k\pi}n,0\le k\le n$处取到这个值. 其中$T_n(x)=\cos(n\arccos x)$为第一类切比雪夫多项式，满足$T_n(\cos x)=\cos(nx)$，是$\cos x$的一个$n$次多项式，且首项系数为$2^{n-1}$.
+  \end{theorem}
+  \begin{proof}
+    假定$w_n(x)$是$[-1,1]$上的一个首一的$n$次多项式，且$|w_n(x)|$的最大值小于$1/2^{n-1}$，令
+    \[ f_n(x)=\frac1{2^{n-1}}T_n(x) - w_n(x). \]
+    由于在$T_n(x)$的极值点处，我们均有
+    \begin{align*}
+      & |w_n(x)| <\bigg| \frac1{2^{n-1}}T_n(x) \bigg|\\
+      & \begin{cases}
+         f_n(x) > 0, & x=\cos\frac{2k\pi}n, 0\le 2k\le n\\
+         f_n(x)<0, & x=\cos\frac{(2k+1)\pi}n, 0
+        \le 2k+1\le n.
+      \end{cases}
+    \end{align*}
+    那么由零点定理可知$f_n(x)$至少有$n$个根，但是$f_n(x)$的次数不超过$n-1$，那么由代数学基本定理，$f_n(x)$必然恒为0，矛盾. 这就证明了切比雪夫多项式的极小性，那么回到原题的话，不过是$n=2$的情形下，将区间作了一个平移, $x=1,2,3$是三个最值点，然后解法就自然而然了.
+  \end{proof}
+\tcbline
+
+\end{MYBOX}
+
+\begin{MYBOX}[colbacktitle=blue]{两道微分中值定理的证明}
+  \setcounter{example}{0}
+  \begin{example}
+    设函数$f(x)$在$[0,\pi]$上连续，在$(0,\pi)$内可导，且
+    \[
+      \int_0^\pi f(x)\,\mathrm dx =
+      \int_0^\pi f(x)\cos x\,\mathrm dx = 0.
+    \]
+    证明：存在两个不同的$\xi_1,\xi_2\in(0,\pi)$，使得$f(\xi_1)=f(\xi_2)=0$.
+  \end{example}
+  \begin{proof}
+    令
+    \[
+      F(x) = \int_0^x f(t)\,\mathrm dt,\,t\in[0,\pi],
+    \]
+    那么由条件有$F(0)=F(\pi)=0$. 进一步利用分部积分得
+    \begin{align*}
+      \int_0^\pi f(x)\sin x\,\mathrm dx & = \int_0^\pi\sin x\,\mathrm d[F(x)]\\
+      & = F(x)\cos x\big|_0^\pi + \int_0^\pi F(x)\sin x\,\mathrm dx\\
+      & = \int_0^\pi F(x) \sin x\,\mathrm dx\\
+      & = F(\xi)\sin \xi = 0,
+    \end{align*}
+    倒数第二步我们用到了积分中值定理，其中$\xi\in(0,\pi)$，于是$\sin \xi \ne0,F(\xi)=0$. 那么由罗尔定理可知，存在$\xi_1\in(0,\xi),\xi_2\in(\xi,\pi)$，使得
+    \[ F'(\xi_1) = F'(\xi_2) = 0. \]
+    即$f(\xi_1)=f(\xi_2)=0$
+  \end{proof}
+  这道题的话是一道比较老的考研题了，还有一道与它很类似的题，但是证明方法没有这么直接:
+  \begin{example}
+    设函数$f(x)$在$[0,\pi]$上连续，在$(0,\pi)$内可导，且
+    \[
+      \int_0^\pi f(x)\cos x\,\mathrm dx =
+      \int_0^\pi f(x)\sin x\,\mathrm dx = 0.
+    \]
+    证明：存在两个不同的$\xi_1,\xi_2\in(0,\pi)$，使得$f(\xi_1)=f(\xi_2)=0$.
+  \end{example}
+  \begin{proof}
+    首先由$\int_0^\pi f(x)\sin x\,\mathrm dx=0$, 利用积分中值定理, 存在$x_0\in(0,\pi)$使得$f(x_0)=0$. 接下来我们用反证法，假定$f(x)$在$(0,\pi)$内只有一个零点$x_0$，则$f(x)$在$(0,x_0)$和$(x_0,\pi)$内都是不变号的，且这两部分是异号的. 那么$f(x)\sin(x-x_0)$就在$(0,\pi)$内不变号, 于是
+    \begin{align*}
+      0 & \ne \int_0^\pi f(x)\sin(x-x_0)\,\mathrm dx\\
+        & = \int_0^\pi[f(x)\sin x\cos x_0 - f(x)\cos x\sin x_0]\,\mathrm dx\\
+        & = \cos x_0\int_0^\pi f(x)\sin x\,\mathrm dx - \sin x_0\int_0^\pi f(x)\cos x\,\mathrm dx\\
+        & = 0,
+    \end{align*}
+    矛盾, 因此$f(x)$在$(0,\pi)$上必定还有零点. 即至少存在两个不同的$\xi_1,\xi_2\in(0,\pi)$，使得$f(\xi_1)=f(\xi_2)=0$.
+  \end{proof}
+\end{MYBOX}
+\begin{MYBOX}[colbacktitle=blue]{组合积分法一题}
+  最近一到积分题问的挺多：
+  \[
+    \int_0^{\frac\pi2}\frac{\sqrt{\sin^3x\cos x}}{1+\sin x\cos x}\,\mathrm dx.
+  \]
+  \tcblower
+  \begin{solve}
+    利用积分公式$\int_0^{\frac\pi2}f(\sin x,\cos x)\,\mathrm dx
+    =\int_0^{\frac\pi2}f(\cos x,\sin x)\,\mathrm dx$，我们有
+    \begin{align*}
+      \int_0^{\frac\pi2}\frac{\sqrt{\sin^3x\cos x}}{1+\sin x\cos x}\,\mathrm dx & = \int_0^{\frac\pi2}\frac{\sin x\sqrt{\sin x\cos x}}{1+\sin x\cos x}\,\mathrm dx\\
+      & = \int_0^{\frac\pi2}\frac{\cos x\sqrt{\sin x\cos x}}{1+\sin x\cos x}\,\mathrm dx\\
+      & = \frac12\int_0^{\frac\pi2}\frac{(\sin x+\cos x)\sqrt{\sin x\cos x}}{1+\sin x\cos x}\,\mathrm dx \\
+      & = \frac12\int_0^{\frac\pi2} \frac{\sqrt{\sin x\cos x}}{1+\sin x\cos x}\,\mathrm d(\sin x-\cos x)\\
+      & = \frac1{2\sqrt2}\int_{-1}^1\frac{\sqrt{1-t^2}}{1+\frac12(1-t^2)}
+      \,\mathrm dt\quad (t=\sin x-\cos x)\\
+      & = \frac1{\sqrt2}\int_0^1\frac{\sqrt{1-t^2}}{1+\frac12(1-t^2)}
+      \,\mathrm dt \\
+      & = \frac1{\sqrt2}\int_0^{\frac\pi2}\frac{\cos^2u}{1+\frac12\cos^2u}
+      \,\mathrm du\\
+      & = \frac\pi{\sqrt2}-\frac\pi{\sqrt3}.
+    \end{align*}
+  \end{solve}
+  \tcbline
+  当然，我们的目的不只是这个定积分了，这题源于组合积分，就是$\sin x+\cos x,\sin x-\cos x$与$\sin x\cos x$的三角关系，因此这题是可以求出其不定积分的.
+  \begin{align*}
+   & \int\frac{\sin x\sqrt{\sin x\cos x}}{1+\sin x\cos x}\,\mathrm dx\\
+   ={}& \frac12 \int\frac{(\sin x+\cos x)\sqrt{\sin x\cos x}}{1+\sin x\cos x}\,\mathrm dx + \frac12 \int_0^{\frac\pi2}\frac{(\sin x-\cos x)\sqrt{\sin x\cos x}}{1+\sin x\cos x}\,\mathrm dx\\
+   ={}& \frac12\int\frac{\sqrt{\sin x\cos x}}{1+\sin x\cos x}\,\mathrm d(\sin x-\cos x) -
+   \frac12\int\frac{\sqrt{\sin x\cos x}}{1+\sin x\cos x}\,\mathrm d(\sin x+\cos x)
+  \end{align*}
+  接下来大家就应该知道怎么做了，不过由于答案比较惊骇，我就不写下去了.
+\end{MYBOX}
+
+\begin{MYBOX}[colbacktitle=blue]{美国数学月刊征解题12206解答}
+这道题是美国数学月刊10月份的征解题，解答已经提交了官网.
+\begin{example}
+  证明：
+  \[
+    \sum_{n=1}^\infty \frac{\bar H_{2n}}{n^2} = \frac34\zeta(3)
+  \]
+\end{example}
+\tcblower
+\begin{Proof}
+  首先我们有
+  \begin{align*}
+    \int_0^1x^{n-1}\ln(1-x)\mathrm dx & = -\int_0^1 x^{n-1}\sum_{k=1}^\infty \frac{x^k}k  \mathrm dx \\
+    & = -\sum_{k=1}^\infty \int_0^1\frac{x^{n+k-1}} k \mathrm dx  = -\sum_{k=1}^\infty \frac 1{k(n+k)} \\
+    & = -\sum_{k=1}^\infty \frac1n\left( \frac1k-\frac1{n+k} \right)= \frac{H_n}n.
+  \end{align*}
+  且注意到
+  \[
+    \sum_{n=1}^\infty \frac{\bar H_{2n}}{n^2}  =
+    \sum_{n=1}^\infty \frac{H_{2n}-H_n}{n^2} =
+    \sum_{n=1}^\infty \frac{H_{2n}}{n^2} - \sum_{n=1}^\infty \frac{H_n}{n^2}.
+  \]
+  其中
+  \begin{align*}
+    \sum_{n=1}^\infty \frac{H_n}{n^2} & =
+    -\sum_{n=1}^\infty \int_0^1x^{n-1}\ln(1-x)\mathrm dx\\
+    & = -\int_0^1\ln(1-x)\left( \sum_{n=1}^\infty\frac{x^{n-1}}n \right)\mathrm dx\\
+    & = \int_0^1\frac{\ln^2(1-x)}x\mathrm dx = \int_0^1\frac{\ln^2 x}{1-x} \\
+    & = \sum_{m=0}^\infty \int_0^1x^m\ln^2x\mathrm dx
+      = 2\sum_{m=0}^\infty \frac1{(m+1)^3}\\
+    & = 2\zeta(3).\\
+    \sum_{n=1}^\infty \frac{\bar H_{2n}}{n^2}
+    & = 2\sum_{n=1}^\infty \frac1n\int_0^1x^{2n-1}\ln(1-x) \mathrm dx\\
+    & = -2\int_0^1\ln(1-x)\left( \sum_{n=1}^\infty\frac{x^{2n-1}}n \right)\mathrm dx\\
+    & = 2\int_0^1\frac{\ln(1-x)\ln(1-x^2)}x \mathrm dx\\
+    & = 2\int_0^1\frac{\ln^2(1-x)+\ln(1-x)\ln(1+x)}x \mathrm dx\\
+    & = 4\zeta(3) + 2\int_0^1\frac{\ln(1-x)\ln(1+x)}x \mathrm dx
+    \end{align*}
+    要求出最后的积分，我们有
+    \begin{align*}
+      \int_0^1 \frac{\ln^2x}{1+x}\mathrm dx
+      & = \sum_{m=0}^\infty\int_0^1(-1)^mx^m\ln^2x\mathrm dx \\
+      & = 2\sum_{m=0}^\infty \frac{(-1)^m}{(m+1)^3}
+        = 2 \cdot\frac34\zeta(3) = \frac32\zeta(3).
+    \end{align*}
+    令
+    \[
+      A = \int_0^1\frac{\ln^2(1+x)}x\mathrm dx,\quad
+      B = \int_0^1\frac{\ln(1-x)\ln(1+x)}x\mathrm dx,
+    \]
+    则
+    \begin{align*}
+      A+2\zeta(3)+2B & = \int_0^1\frac{\ln^2(1+x)}x\mathrm dx + \int_0^1\frac{\ln^2(1-x)}x\mathrm dx +
+      2\int_0^1\frac{\ln(1-x)\ln(1+x)}x\mathrm dx \\
+      & = \int_0^1\frac{\ln^2(1-x^2)}x\mathrm dx
+        = \frac12\int_0^1\frac{\ln^2(1-x)}x\mathrm dx
+          \quad (x^2 \mapsto x)  \\
+      & = \zeta(3).\\
+      A+2\zeta(3)-2B & = \int_0^1\frac{\ln^2(1+x)}x\mathrm dx + \int_0^1\frac{\ln^2(1-x)}x\mathrm dx -
+      2\int_0^1\frac{\ln(1-x)\ln(1+x)}x\mathrm dx\\
+      & = \int_0^1\frac{\ln^2 \frac{1-x}{1+x} }x\mathrm dx = 2 \int_0^1\frac{\ln^2x}{(1-x)(1+x)}\mathrm dx
+      \quad (x\mapsto\frac{1-x}{1+x})\\
+      & = \int_0^1\frac{\ln^2x}{1-x}\mathrm dx + \int_0^1 \frac{\ln^2x}{1+x}\mathrm dx = \frac72\zeta(3).
+    \end{align*}
+    由以上两个等式我们得到
+    \[ A=\frac14\zeta(3),\quad B = -\frac58\zeta(3). \]
+    最后将所有结果相加得到原题的答案
+    \[
+      4\zeta(3) - 2\cdot \frac58\zeta(3) - 2\zeta(3) = \frac34\zeta(3).
+    \]
+\end{Proof}
+
+
+\end{MYBOX}
+\begin{MYBOX}[colbacktitle=blue]{美国数学月刊征解题12207解答}
+设 $f:[0,1]\to\mathbb R$ 是一个连续函数，满足 $\int_0^1f(x)\mathrm dx=1$. 求
+\[
+  \lim_{n\to\infty}\frac n{\ln n}\int_0^1x^nf(x^n)\ln(1-x)\mathrm dx.
+\]
+\tcblower
+\begin{solve}
+令
+\[
+  F(x) = \int_0^xf(t)\mathrm dt,x\in[0,1]
+\]
+则 $F(0)=0,F(1)=1$， 且 $F(x)$在 $[0,1]$上可导. 首先我们有
+
+\begin{align*}
+     & n\int_0^1x^nf(x^n)\ln(1-x)\mathrm dx \\
+  = {}& \int_0^1x\ln(1-x) d[F(x^n)-1]\\
+  = {}& x\ln(1-x)[F(x^n)-1]\Big|_0^1 - \int_0^1[F(x^n)-1]
+      \left( \ln(1-x) - \frac x{1-x} \right)\mathrm dx \\
+  = {}& \int_0^1\left(\int_{x^n}^1f(t)\mathrm dt\right)\left( \ln(1-x) - \frac x{1-x} \right)\mathrm dx \\
+  = {}& \int_0^1 f(t)  \int_0^{t^{1/n}} \left(\ln(1-x) + 1 - \frac1{1-x} \right)\mathrm dx \mathrm dt
+\end{align*}
+其中我们已经使用了洛必达法则:
+\begin{align*}
+  \lim _{x\to 1^-} x\ln(1-x)[F(x^n)-1] & = \lim_{x\to1^-}
+   \ln(1-x) \int_1^{x^n} f(t)\mathrm dt \\
+   & = \lim_{x\to1^-} \frac{\int_1^{x^n} f(t)\mathrm dt }
+       { \frac1{\ln(1-x)} } \\
+   & = \lim_{x\to 1^-} \frac{ nx^{n-1} f(x^n) }
+            { \frac1{(1-x)\ln^2(1-x)} } \\
+   & = \lim_{x\to 1^-}(1-x)\ln^2(1-x) \cdot n f(x^n) = 0
+\end{align*}
+最后一步利用了
+$\lim\limits_{x\to0^+}\sqrt x\ln x = 0$.
+
+因此原极限可约化为
+\begin{align*}
+  I & \triangleq \lim_{n\to\infty}\frac n{\ln n}\int_0^1x^nf(x^n)\ln(1-x)\mathrm dx \\
+  & = \lim_{n\to\infty}\frac 1{\ln n}\int_0^1 f(t)  \int_0^{t^{1/n}}\left( \ln(1-x) + 1 - \frac1{1-x} \right)\mathrm dx \mathrm dt
+\end{align*}
+由于 $|f(t)|\le M$ 是有界的，且
+\[
+  \left| \int_0^1 f(t)  \int_0^{t^{1/n}} [\ln(1-x) + 1]\mathrm dx \mathrm dt  \right| \le
+  M \int_0^1  \int_0^1 [|\ln(1-x)| + 1]\mathrm dx \mathrm dt.
+\]
+而我们知道上式最后的积分是收敛的，所以
+\begin{align*}
+  I & = - \lim_{n\to\infty}\frac 1{\ln n}\int_0^1 f(t)  \int_0^{t^{1/n}}\frac1{1-x}\mathrm dx \mathrm dt \\
+    & =  \lim_{n\to\infty}\frac 1{\ln n}\int_0^1 f(t)\ln(1-t^{1/n}) \mathrm dt \\
+    & = - \lim_{a\to0^+} \frac1{\ln a}\int_0^1f(t)\ln(1-t^a) \mathrm dt\\
+    & = - \lim_{a\to0^+} \frac1{\ln a}\int_0^af(t)\ln(1-t^a) \mathrm dt - \lim_{a\to0^+} \frac1{\ln a}\int_a^1f(t)\ln(1-t^a) \mathrm dt
+\end{align*}
+对第一个积分，令$t^a=u$. 则
+\begin{align*}
+  \left| \int_0^af(t)\ln(1-t^a)\mathrm dt \right| & = \left| \frac1a\int_0^{a^a}f(u^{1/a}) u^{1/a}\frac{\ln(1-u)}u du  \right| \\
+  & \le M\frac1a\left| \int_0^{a^a} (a^a)^{1/a}\frac{\ln(1-u)}u du  \right| \\
+  & \le M  \left| \int_0^1 \frac{\ln(1-u)}u du  \right|
+\end{align*}
+最后的积分也是收敛的，于是
+\[
+  \lim_{a\to0^+} \frac1{\ln a}\int_0^af(t)\ln(1-t^a) = 0.
+\]
+对$t\in[a,1]$，我们有 $a^a\le t^a \le 1$.  且 $\lim\limits_{a\to0^+}a^a=1$，这意味着 $\lim\limits_{a\to0^+}t^a=1,\forall t\in[a,1]$. 因此,
+\begin{align*}
+  I & = - \lim_{a\to0^+} \frac1{\ln a}\int_a^1f(t)\ln(1-t^a) \mathrm dt \\
+  & = - \lim_{a\to0^+} \frac1{\ln a}\int_a^1f(t)
+    \ln (1-e^{a\ln t})\mathrm dt \\
+  & = - \lim_{a\to0^+} \frac1{\ln a}\int_a^1f(t)
+    \ln [-(1+o(1))a\ln t]\mathrm dt \\
+  & = - \lim_{a\to0^+}\int_a^1 f(t)
+    \frac{\ln a + \ln(1+o(1)) + \ln(-\ln t)}{\ln a} \mathrm dt\\
+  & = -\lim_{a\to0^+}\int_a^1 f(t) \mathrm dt - \lim_{a\to0^+}\frac1{\ln a}\int_a^1 f(t) \ln(-\ln t) \mathrm dt.
+\end{align*}
+对于上式最后的积分，令 $u=-\ln t$,
+\[
+  \left| \int_a^1 f(t) \ln(-\ln t) \mathrm dt \right| \le M
+  \left| \int_0^1 \ln(-\ln t) \mathrm dt \right| = M\int_0^\infty e^{-u} \ln u du<\infty.
+\]
+最后我们得到
+\begin{align*}
+  I & = -\lim_{a\to0^+}\int_a^1 f(t) \mathrm dt - \lim_{a\to0^+}\frac1{\ln a}\int_a^1 f(t) \ln(-\ln t) \mathrm dt\\
+  & = -\int_0^1f(t)\mathrm dt = -1.
+\end{align*}
+\end{solve}
+\end{MYBOX}
+
+\begin{MYBOX}[colbacktitle=blue]{一道小有难度的二重积分}
+这道积分题是某考研模拟卷上的一道题，感觉题目出的还不错，也小有难度.
+\setcounter{example}{0}
+\begin{example}
+  设函数$f(x,y)=\sqrt{\frac{x^2-x+y^2}{2x-x^2-y^2}}$.
+  \begin{enumerate}
+    \item 求$f(x,y)$得定义域$D$；
+    \item 计算$\iint_Df(x,y)\mathrm d\sigma$.
+  \end{enumerate}
+\end{example}
+\tcblower
+\begin{solve}
+  显然定义域是$x^2-x+y^2\ge0,2x-x^2-y^2>0$或$x^2-x+y^2\le0,2x-x^2-y^2<0$. 这是这几个不等式分别是两个圆的内外部分，分析可知定义域如下图：
+  \begin{center}
+    \begin{tikzpicture}[thick,inner sep=2.2pt,scale=2.5,>=Stealth]
+  \filldraw [fill=gray!30,draw=black] (1,0) circle (1);
+  \fill [white] (0.5,0) circle (0.5);
+  \draw (0.5,0) circle (0.5);
+  \draw [->] (-0.4,0) -- (0,0) node[below left]{$O$} -- (2.4,0) node [below]{$x$};
+  \draw [->] (0,-1.2) -- (0,1.2) node [right]{$y$};
+  \fill (0.5,0) node [below]{$\frac12$} circle(0.5pt)
+  (1,0) node[below right]{1} circle(0.5pt)
+  (2,0) node[below right]{2} circle(0.5pt);
+\end{tikzpicture}
+  \end{center}
+  两个圆的极坐标方程分别为$r=\cos\theta$和$r=2\cos\theta$. 于是在极坐标系下，二重积分化为
+  \begin{align*}
+    I = \int_{-\frac\pi2}^{\frac\pi2}\mathrm d\theta
+    \int_{\cos\theta}^{2\cos\theta}\sqrt{\frac{r^2-r\cos\theta}{2r\cos\theta-r^2}}r\mathrm dr
+    = 2\int_0^{\frac\pi2}\mathrm d\theta
+    \int_{\cos\theta}^{2\cos\theta}
+    \sqrt{\frac{r-\cos\theta}{2\cos\theta-r}}r \mathrm dr
+  \end{align*}
+  令$a=\cos\theta,b=2\cos\theta$，注意到$r-a+b-r=b-a=a$，于是可令$r-a=a\sin^2t,b-r=a\cos^2t$，我们有
+  \begin{align*}
+    \int_a^b r\sqrt{\frac{r-a}{b-r}}\mathrm dr
+    & = \int_0^{\frac\pi2}\big( a + a\sin^2t \big)\frac{\sin t}{\cos t}\cdot 2a\sin t\cos t\mathrm dt\\
+    & = 2a^2 \int_0^{\frac\pi2} (\sin^2t + \sin^4t)\mathrm dt\\
+    & = \frac{7\pi}8a^2= \frac{7\pi}8\cos^2\theta.
+  \end{align*}
+  于是
+  \[
+    I = 2\int_0^{\frac\pi2} \frac{7\pi}8\cos^2\theta \mathrm d\theta = \frac7{16}\pi^2.
+  \]
+\end{solve}
+
 \end{MYBOX}
 
 \end{document}
