@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yuxtech.github.io/"/>
-  <updated>2020-09-14T01:36:08.000Z</updated>
+  <updated>2020-11-08T03:06:54.000Z</updated>
   <id>https://yuxtech.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2021</title>
+    <link href="https://yuxtech.github.io/2020/11/08/2021/"/>
+    <id>https://yuxtech.github.io/2020/11/08/2021/</id>
+    <published>2020-11-08T03:04:45.000Z</published>
+    <updated>2020-11-08T03:06:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="2021考研数学模拟卷"><a href="#2021考研数学模拟卷" class="headerlink" title="2021考研数学模拟卷"></a>2021考研数学模拟卷</h1><p><a href="https://yuxtech.github.io/math/2021数一模拟.pdf">2021数一模拟</a><br><a href="https://yuxtech.github.io/math/2021数一模拟答案.pdf">2021数一模拟答案</a></p><p><a href="https://yuxtech.github.io/math/2021数二模拟.pdf">2021数二模拟</a><br><a href="https://yuxtech.github.io/math/2021数二模拟答案.pdf">2021数二模拟答案</a></p><p><a href="https://yuxtech.github.io/math/2021数三模拟.pdf">2021数三模拟</a><br><a href="https://yuxtech.github.io/math/2021数三模拟答案.pdf">2021数三模拟答案</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;2021考研数学模拟卷&quot;&gt;&lt;a href=&quot;#2021考研数学模拟卷&quot; class=&quot;headerlink&quot; title=&quot;2021考研数学模拟卷&quot;&gt;&lt;/a&gt;2021考研数学模拟卷&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://yuxtech.github.io
+      
+    
+    </summary>
+    
+    
+      <category term="考研" scheme="https://yuxtech.github.io/tags/%E8%80%83%E7%A0%94/"/>
+    
+  </entry>
   
   <entry>
     <title>yuenancover</title>
@@ -451,29 +474,6 @@
       
       
         &lt;h1 id=&quot;宏包重复加载的问题&quot;&gt;&lt;a href=&quot;#宏包重复加载的问题&quot; class=&quot;headerlink&quot; title=&quot;宏包重复加载的问题&quot;&gt;&lt;/a&gt;宏包重复加载的问题&lt;/h1&gt;&lt;p&gt;很多人（多指新手）喜欢复制粘贴别人的代码，也不管代码中的设置是干什么的，也不懂加载的
-      
-    
-    </summary>
-    
-    
-      <category term="LaTeX" scheme="https://yuxtech.github.io/tags/LaTeX/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>解决listings环境无法嵌套的问题</title>
-    <link href="https://yuxtech.github.io/2019/07/30/listings/"/>
-    <id>https://yuxtech.github.io/2019/07/30/listings/</id>
-    <published>2019-07-30T14:52:20.000Z</published>
-    <updated>2019-07-30T15:12:58.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>在LaTeX的摘录环境中，<code>listings</code>包提供的<code>lstlisting</code>环境无疑是最优秀的，它支持现在的多种计算机语言，提供了语法高亮功能，还有各种摘录设置。但是最近有群员询问有关lstlisting环境无法嵌套的问题：比如下面的问题，</p><p><div align="center">  <img width="600" src="https://yuxtech.github.io/img/listings.png"></div><br>如果使用两个lstlisting环境嵌套，会使得第一个<code>\begin{lstlisting}</code>匹配到第一个<code>\end{lstlisting}</code>而使得第二个报错。比较不错的解决方法就是把外层的摘录环境换成<code>verbatim</code>，不过由于个人比较喜欢<code>listings</code>包的风格，所以这里采用<code>tcolorbox</code>包的<code>listings</code>库提供的<code>tcblisting</code>环境。<code>tcblisting</code>环境其实就是调用的<code>listings</code>包，它一方面接受<code>listings</code>包的设置，另一方面还接受<code>tcolorbox</code>包的设置，简直一举两得。默认情况下，摘录的同时还执行摘录的代码，所以这里添加了<code>listing only</code>选项，仅仅作摘录使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;ctexart&#125;</span><br><span class="line">\usepackage&#123;tcolorbox&#125;</span><br><span class="line">\tcbuselibrary&#123;listings&#125;</span><br><span class="line">\lstdefinestyle&#123;mystyle&#125;&#123;</span><br><span class="line">  basicstyle=%</span><br><span class="line">    \ttfamily</span><br><span class="line">    \lst@ifdisplaystyle\small\fi</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">\lstset&#123;basicstyle=\ttfamily,style=mystyle&#125;</span><br><span class="line"></span><br><span class="line">\definecolor&#123;structurecolor&#125;&#123;RGB&#125;&#123;0,120,2&#125;%</span><br><span class="line">\definecolor&#123;winered&#125;&#123;rgb&#125;&#123;0.5,0,0&#125;</span><br><span class="line">\definecolor&#123;lightgrey&#125;&#123;rgb&#125;&#123;0.9,0.9,0.9&#125;</span><br><span class="line">\definecolor&#123;frenchplum&#125;&#123;RGB&#125;&#123;190,20,83&#125;</span><br><span class="line">\lstset&#123;language=[LaTeX]TeX,</span><br><span class="line">texcsstyle=*\color&#123;winered&#125;,</span><br><span class="line">numbers=none,</span><br><span class="line">breaklines=true,</span><br><span class="line">keywordstyle=\color&#123;winered&#125;,</span><br><span class="line">commentstyle=\color&#123;gray&#125;,</span><br><span class="line">emph=&#123;main,none,fontenc,fontspec,xeCJK,FiraMono,xunicode,newtxmath,figure,fig,image,img,table,itemize,enumerate,newtxtext,newtxtt,ctex,microtype,description,times,newtx,booktabs,tabular,PDFLaTeX,XeLaTeX,type1cm,BibTeX,device,color,mode,lang,amsthm,tcolorbox,titlestyle,cite,marginnote,ctex,listings&#125;,</span><br><span class="line">emphstyle=&#123;\color&#123;frenchplum&#125;&#125;,</span><br><span class="line">morekeywords=&#123;main,DeclareSymbolFont,SetSymbolFont,toprule,midrule,bottomrule,institute,version,includegraphics,setmainfont,setsansfont,setmonofont ,setCJKmainfont,setCJKsansfont,setCJKmonofont,RequirePackage,figref,tabref,email,maketitle,keywords,definecolor,extrainfo,logo,cover,subtitle,appendix,chapter,hypersetup,mainmatter,tableofcontents,elegantpar,numbers,authoryear,heiti,kaishu,lstset,pagecolor,zhnumber,marginpar,part,equote&#125;,</span><br><span class="line">frame=single,</span><br><span class="line">tabsize=2,</span><br><span class="line">rulecolor=\color&#123;structurecolor&#125;,</span><br><span class="line">framerule=0pt,</span><br><span class="line">columns=flexible,</span><br><span class="line">% backgroundcolor=\color&#123;lightgrey&#125;</span><br><span class="line">&#125;</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">\begin&#123;tcblisting&#125;&#123;listing only,boxrule=-1pt,colback=white&#125;</span><br><span class="line">\begin&#123;lstlisting&#125;[language=Fortran,frame=single]</span><br><span class="line">program main</span><br><span class="line">implicit none</span><br><span class="line">real(kind=8):: em,rmax,rkmax</span><br><span class="line">end</span><br><span class="line">\end&#123;lstlisting&#125;</span><br><span class="line">\end&#123;tcblisting&#125;</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;在LaTeX的摘录环境中，&lt;code&gt;listings&lt;/code&gt;包提供的&lt;code&gt;lstlisting&lt;/code&gt;环境无疑是最优秀的，它支持现在的多种计算机语言，提供了语法高亮功能，还有各种摘录设置。但是最近有群员询问有关lstlisting环境无法嵌套的问题：比如
       
     
     </summary>

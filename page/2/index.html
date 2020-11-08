@@ -172,6 +172,91 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-independence" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/30/independence/">independence</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/30/independence/" class="archive-article-date">
+ 
+  	<time datetime="2019-11-30T01:51:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-30</time>
+</a>
+        
+		
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="样本均值与样本方差相互独立的充要条件"><a href="#样本均值与样本方差相互独立的充要条件" class="headerlink" title="样本均值与样本方差相互独立的充要条件"></a>样本均值与样本方差相互独立的充要条件</h1>
+
+	<div class="row">
+    <embed src="https://yuxtech.github.io/math/duli.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数学</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/30/independence/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+<!-- 目录内容 -->
+             
+        <!-- 目录内容结束 -->
+
+  
     <article id="post-monijuan" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -921,91 +1006,9 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
         <!-- 目录内容结束 -->
 
   
-    <article id="post-listings" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/30/listings/">解决listings环境无法嵌套的问题</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/30/listings/" class="archive-article-date">
- 
-  	<time datetime="2019-07-30T14:52:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-30</time>
-</a>
-        
-		
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在LaTeX的摘录环境中，<code>listings</code>包提供的<code>lstlisting</code>环境无疑是最优秀的，它支持现在的多种计算机语言，提供了语法高亮功能，还有各种摘录设置。但是最近有群员询问有关lstlisting环境无法嵌套的问题：比如下面的问题，</p>
-<p><div align="center">
-  <img width="600" src="https://yuxtech.github.io/img/listings.png">
-</div><br>如果使用两个lstlisting环境嵌套，会使得第一个<code>\begin{lstlisting}</code>匹配到第一个<code>\end{lstlisting}</code>而使得第二个报错。比较不错的解决方法就是把外层的摘录环境换成<code>verbatim</code>，不过由于个人比较喜欢<code>listings</code>包的风格，所以这里采用<code>tcolorbox</code>包的<code>listings</code>库提供的<code>tcblisting</code>环境。<code>tcblisting</code>环境其实就是调用的<code>listings</code>包，它一方面接受<code>listings</code>包的设置，另一方面还接受<code>tcolorbox</code>包的设置，简直一举两得。默认情况下，摘录的同时还执行摘录的代码，所以这里添加了<code>listing only</code>选项，仅仅作摘录使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;ctexart&#125;</span><br><span class="line">\usepackage&#123;tcolorbox&#125;</span><br><span class="line">\tcbuselibrary&#123;listings&#125;</span><br><span class="line">\lstdefinestyle&#123;mystyle&#125;&#123;</span><br><span class="line">  basicstyle=%</span><br><span class="line">    \ttfamily</span><br><span class="line">    \lst@ifdisplaystyle\small\fi</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">\lstset&#123;basicstyle=\ttfamily,style=mystyle&#125;</span><br><span class="line"></span><br><span class="line">\definecolor&#123;structurecolor&#125;&#123;RGB&#125;&#123;0,120,2&#125;%</span><br><span class="line">\definecolor&#123;winered&#125;&#123;rgb&#125;&#123;0.5,0,0&#125;</span><br><span class="line">\definecolor&#123;lightgrey&#125;&#123;rgb&#125;&#123;0.9,0.9,0.9&#125;</span><br><span class="line">\definecolor&#123;frenchplum&#125;&#123;RGB&#125;&#123;190,20,83&#125;</span><br><span class="line">\lstset&#123;language=[LaTeX]TeX,</span><br><span class="line">	texcsstyle=*\color&#123;winered&#125;,</span><br><span class="line">	numbers=none,</span><br><span class="line">	breaklines=true,</span><br><span class="line">	keywordstyle=\color&#123;winered&#125;,</span><br><span class="line">	commentstyle=\color&#123;gray&#125;,</span><br><span class="line">	emph=&#123;main,none,fontenc,fontspec,xeCJK,FiraMono,xunicode,newtxmath,figure,fig,image,img,table,itemize,enumerate,newtxtext,newtxtt,ctex,microtype,description,times,newtx,booktabs,tabular,PDFLaTeX,XeLaTeX,type1cm,BibTeX,device,color,mode,lang,amsthm,tcolorbox,titlestyle,cite,marginnote,ctex,listings&#125;,</span><br><span class="line">	emphstyle=&#123;\color&#123;frenchplum&#125;&#125;,</span><br><span class="line">	morekeywords=&#123;main,DeclareSymbolFont,SetSymbolFont,toprule,midrule,bottomrule,institute,version,includegraphics,setmainfont,setsansfont,setmonofont ,setCJKmainfont,setCJKsansfont,setCJKmonofont,RequirePackage,figref,tabref,email,maketitle,keywords,definecolor,extrainfo,logo,cover,subtitle,appendix,chapter,hypersetup,mainmatter,tableofcontents,elegantpar,numbers,authoryear,heiti,kaishu,lstset,pagecolor,zhnumber,marginpar,part,equote&#125;,</span><br><span class="line">	frame=single,</span><br><span class="line">	tabsize=2,</span><br><span class="line">	rulecolor=\color&#123;structurecolor&#125;,</span><br><span class="line">	framerule=0pt,</span><br><span class="line">	columns=flexible,</span><br><span class="line">	% backgroundcolor=\color&#123;lightgrey&#125;</span><br><span class="line">&#125;</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">\begin&#123;tcblisting&#125;&#123;listing only,boxrule=-1pt,colback=white&#125;</span><br><span class="line">\begin&#123;lstlisting&#125;[language=Fortran,frame=single]</span><br><span class="line">program main</span><br><span class="line">implicit none</span><br><span class="line">real(kind=8):: em,rmax,rkmax</span><br><span class="line">end</span><br><span class="line">\end&#123;lstlisting&#125;</span><br><span class="line">\end&#123;tcblisting&#125;</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">LaTeX</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/30/listings/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-<!-- 目录内容 -->
-             
-        <!-- 目录内容结束 -->
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
